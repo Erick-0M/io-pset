@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,adjustbox,float}
+\usepackage[T1]{fontenc}
+% Folder layout for Overleaf: keep output/{figures,tables,overleaf}/ together and compile output/overleaf/skeleton.tex
+\graphicspath{{../figures/}}
+\newcommand{\figsrc}[3]{\begin{figure}[H]\centering\includegraphics[width=0.78\textwidth]{#1}\caption{#2}\label{fig:#1}\par\smallskip{\small Source: #3.}\end{figure}}
+\newcommand{\tabsrc}[1]{\par\noindent{\small Source: #1.}\par\bigskip}
+
+\title{Economics 450-1, Problem Set 1: Figures and Tables}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+
+\section*{Question 6: market simulation and welfare}
+
+
+% ---- Q6a ----
+\subsection*{6a}
+
+\figsrc{6a_prices_hist_kde.pdf}{Distribution of prices, $J=3$ versus $J=5$.}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+\figsrc{6a_markups_hist_kde.pdf}{Distribution of markups, $J=3$ versus $J=5$ (markups below $-1$ excluded; axis truncated at the 95th percentile).}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+\figsrc{6a_profits_hist_kde.pdf}{Distribution of profits, $J=3$ versus $J=5$.}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+\input{../tables/6a_desc_stats.tex}
+\tabsrc{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+
+% ---- Q6b ----
+\subsection*{6b}
+
+\figsrc{6b_cs_hist_kde.pdf}{Distribution of consumer surplus, $J=3$ versus $J=5$.}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+\input{../tables/6b_cs_desc.tex}
+\tabsrc{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+
+% ---- Q6c ----
+\subsection*{6c}
+
+\figsrc{6c_share_diff_hist_kde.pdf}{Observed minus simulated shares, $J=3$ and $J=5$.}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+\figsrc{6c_share_scatter.pdf}{Observed versus simulated shares, $J=3$ and $J=5$.}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+\input{../tables/6c_share_discrepancy.tex}
+\tabsrc{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} (\texttt{pset\_io}, Q6; common consumer draws)}
+
+\section*{Question 7: demand moments and instruments}
+
+
+% ---- Q7a ----
+\subsection*{7a}
+
+\input{../tables/7a_moments.tex}
+\tabsrc{$T=100$, $J=3$ simulation data with the true $\xi_{jt}$ (\texttt{blp.compute\_hausman}, \texttt{blp.compute\_blp})}
+
+% ---- Q7b: no deliverable ----
+\subsection*{7b}
+% 7b: no deliverable
+
+
+% ---- Q7c ----
+\subsection*{7c}
+
+\input{../tables/7c_moments.tex}
+\tabsrc{$T=100$, $J=3$ simulation data with the true $\xi_{jt}$ (\texttt{blp.compute\_hausman}, \texttt{blp.compute\_blp})}
+
+\section*{Question 8: mixed logit by nested fixed point}
+
+
+% ---- Q8a ----
+\subsection*{8a}
+
+\figsrc{8a_delta_hist.pdf}{Distribution of mean utility $\delta_{jt}$ ($J=3$).}{true-parameter simulation of \texttt{100markets3products.mat} ($J=3$)}
+\figsrc{8a_mu_hist.pdf}{Distribution of individual utility deviations $\mu_{ijt}$ ($J=3$; displayed between the 0.5th and 99.5th percentiles).}{true-parameter simulation of \texttt{100markets3products.mat} ($J=3$)}
+
+% ---- Q8b: no deliverable ----
+\subsection*{8b}
+% 8b: no deliverable
+
+
+% ---- Q8c ----
+\subsection*{8c}
+
+\input{../tables/8c_estimates.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8c_convergence.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+
+% ---- Q8d ----
+\subsection*{8d}
+
+\figsrc{8d_elas_scatter.pdf}{Simulated (at estimates) versus real elasticities: own- and cross-price.}{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_11.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_12.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_13.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_21.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_22.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_23.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_31.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_32.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+\input{../tables/8d_elas_cell_33.tex}
+\tabsrc{estimated model \texttt{models/model.jdl2} ($T=100$, $J=3$, BLP instruments, three starting values)}
+
+% ---- Q8e ----
+\subsection*{8e}
+
+\input{../tables/8e_estimates.tex}
+\tabsrc{estimated model \texttt{models/model\_ls.jdl2} ($T=10$, $J=3$)}
+\input{../tables/8e_convergence.tex}
+\tabsrc{estimated model \texttt{models/model\_ls.jdl2} ($T=10$, $J=3$)}
+
+% ---- Q8f ----
+\subsection*{8f}
+
+\input{../tables/8f_compare.tex}
+\tabsrc{estimated models \texttt{models/model\_inc.jdl2} (price as instrument) and \texttt{models/model.jdl2}}
+
+\section*{Question 9: cost shifters and the supply side}
+
+
+% ---- Q9a ----
+\subsection*{9a}
+
+\input{../tables/9a_estimates.tex}
+\tabsrc{estimated models \texttt{models/model\_ss.jdl2} (+ cost shifter) and \texttt{models/model.jdl2}}
+\figsrc{9a_profit_compare.pdf}{Profits at the estimates versus real profits, by specification.}{estimated models \texttt{models/model\_ss.jdl2} (+ cost shifter) and \texttt{models/model.jdl2}}
+\figsrc{9a_elas_compare.pdf}{Elasticities at the estimates versus real elasticities, by specification.}{estimated models \texttt{models/model\_ss.jdl2} (+ cost shifter) and \texttt{models/model.jdl2}}
+
+% ---- Q9b: not produced (no saved T=10 estimates with the cost shifter; see notebook notes) ----
+\subsection*{9b}
+% 9b: not produced (no saved T=10 estimates with the cost shifter; see notebook notes)
+
+
+% ---- Q9c: no deliverable ----
+\subsection*{9c}
+% 9c: no deliverable
+
+
+% ---- Q9d ----
+\subsection*{9d}
+
+\figsrc{9d_cost_scatter.pdf}{Recovered versus real marginal cost under perfect competition, Nash-Bertrand and collusion (axes truncated at the 0.5th and 99.5th percentiles).}{demand estimates \texttt{models/model\_ss.jdl2}; marginal cost recovered under three ownership matrices}
+
+% ---- Q9e ----
+\subsection*{9e}
+
+\input{../tables/9e_estimates.tex}
+\tabsrc{joint estimates \texttt{models/model\_system\_\{bert,comp,coll\}.jdl2}, re-evaluated at the saved $\hat\sigma_\alpha$}
+\figsrc{9e_elas_scatter.pdf}{Simulated versus real elasticities by conduct assumption (axes truncated at the 1st and 99th percentiles).}{joint estimates \texttt{models/model\_system\_\{bert,comp,coll\}.jdl2}, re-evaluated at the saved $\hat\sigma_\alpha$}
+\input{../tables/9e_elas_desc.tex}
+\tabsrc{joint estimates \texttt{models/model\_system\_\{bert,comp,coll\}.jdl2}, re-evaluated at the saved $\hat\sigma_\alpha$}
+\figsrc{9e_markup_scatter.pdf}{Implied versus real markups by conduct assumption (axes truncated at the 1st and 99th percentiles).}{joint estimates \texttt{models/model\_system\_\{bert,comp,coll\}.jdl2}, re-evaluated at the saved $\hat\sigma_\alpha$}
+\input{../tables/9e_markup_desc.tex}
+\tabsrc{joint estimates \texttt{models/model\_system\_\{bert,comp,coll\}.jdl2}, re-evaluated at the saved $\hat\sigma_\alpha$}
+
+\section*{Question 10: merger simulation}
+
+
+% ---- Q10a: no deliverable ----
+\subsection*{10a}
+% 10a: no deliverable
+
+
+% ---- Q10b ----
+\subsection*{10b}
+
+\figsrc{10b_dp_product1_hist.pdf}{Post-merger price change, product 1 (merging).}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\figsrc{10b_dp_product2_hist.pdf}{Post-merger price change, product 2 (merging).}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\figsrc{10b_dp_product3_hist.pdf}{Post-merger price change, product 3 (non-merging).}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\input{../tables/10b_dp_desc.tex}
+\tabsrc{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\input{../tables/10b_dsurplus_desc.tex}
+\tabsrc{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+
+% ---- Q10c ----
+\subsection*{10c}
+
+\figsrc{10c_upp1_scatter.pdf}{Upward pricing pressure versus simulated price change, product 1.}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\figsrc{10c_upp2_scatter.pdf}{Upward pricing pressure versus simulated price change, product 2.}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\figsrc{10c_dps_scatter.pdf}{Linear approximation versus simulated change in producer surplus.}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\figsrc{10c_dcs_scatter.pdf}{Linear approximation versus simulated change in consumer surplus.}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+\figsrc{10c_dts_scatter.pdf}{Linear approximation versus simulated change in total surplus.}{merger simulation of firms 1 and 2 from \texttt{models/model\_system\_bert.jdl2}}
+
+\end{document}

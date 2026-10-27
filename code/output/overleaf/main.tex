@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,adjustbox,float,subcaption}
+\usepackage[T1]{fontenc}
+% Keep output/{figures,tables,overleaf}/ together in Overleaf and compile output/overleaf/main.tex
+\graphicspath{{../figures/}}
+\newcommand{\figitem}[4]{\begin{figure}[H]\centering\caption{#2}\label{#3}\includegraphics[width=0.8\textwidth]{#1}\par\smallskip{\raggedright\noindent\footnotesize Source: #4.\par}\end{figure}}
+\newcommand{\tabitem}[4]{\begin{table}[H]\centering\caption{#2}\label{#3}\adjustbox{max width=\textwidth}{\input{../tables/#1}}\par\smallskip{\raggedright\noindent\footnotesize Source: #4.\par}\end{table}}
+\title{Economics 450-1, Problem Set 1: Figures and Tables}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{Question 6: Market simulation and welfare}
+
+% ---- Q6a ----
+\subsection*{6a}
+\begin{figure}[H]\centering\caption{Prices, markups and profits, $J=3$ versus $J=5$ (tails not drawn).}\label{fig:grp_q6a}
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q6a_hist_prices.pdf}\caption{Prices}\label{fig:q6a_hist_prices}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q6a_hist_markups.pdf}\caption{Markups}\label{fig:q6a_hist_markups}\end{subfigure}\par\medskip
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q6a_hist_profits.pdf}\caption{Profits}\label{fig:q6a_hist_profits}\end{subfigure}\par\medskip
+{\raggedright\noindent\footnotesize Source: true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} with common consumer draws.\par}
+\end{figure}
+\tabitem{q6a_desc_stats.tex}{Descriptive statistics of prices, markups and profits (all products and markets).}{tab:q6a_desc_stats}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} with common consumer draws; full sample, no trimming}
+
+% ---- Q6b ----
+\subsection*{6b}
+\figitem{q6b_hist_cs.pdf}{Distribution of consumer surplus across markets, $J=3$ versus $J=5$.}{fig:q6b_hist_cs}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} with common consumer draws; expected surplus averaged over the simulated consumers}
+\tabitem{q6b_desc_cs.tex}{Descriptive statistics of consumer surplus across markets.}{tab:q6b_desc_cs}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} with common consumer draws}
+
+% ---- Q6c ----
+\subsection*{6c}
+\begin{figure}[H]\centering\caption{Real versus simulated shares.}\label{fig:grp_q6c}
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q6c_hist_share_diff.pdf}\caption{Difference, real minus simulated}\label{fig:q6c_hist_share_diff}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q6c_scatter_shares_J3.pdf}\caption{Real versus simulated, $J=3$}\label{fig:q6c_scatter_shares_J3}\end{subfigure}\par\medskip
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q6c_scatter_shares_J5.pdf}\caption{Real versus simulated, $J=5$}\label{fig:q6c_scatter_shares_J5}\end{subfigure}\par\medskip
+{\raggedright\noindent\footnotesize Source: true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} with common consumer draws.\par}
+\end{figure}
+\tabitem{q6c_share_discrepancy.tex}{Discrepancy between real and simulated shares (real minus simulated), and maximum deviation of simulated shares plus outside share from one.}{tab:q6c_share_discrepancy}{true-parameter simulation of \texttt{100markets3products.mat} and \texttt{100markets5products.mat} with common consumer draws}
+
+\section*{Question 7: Demand moments and instruments}
+
+% ---- Q7a ----
+\subsection*{7a}
+\tabitem{q7a_moments.tex}{Sample analogues of the moments $E[\xi_{jt}z_{jt}]$ and $t$-tests of $H_0:E[\xi_{jt}z_{jt}]=0$.}{tab:q7a_moments}{true structural errors $\xi_{jt}$ and data of \texttt{100markets3products.mat}}
+
+% ---- Q7c ----
+\subsection*{7c}
+\tabitem{q7c_moments.tex}{Sample analogues of the moments with the BLP rival-characteristic sums and $t$-tests of $H_0:E[\xi_{jt}z_{jt}]=0$.}{tab:q7c_moments}{true structural errors $\xi_{jt}$ and data of \texttt{100markets3products.mat}}
+
+\section*{Question 8: Mixed logit by nested fixed point}
+
+% ---- Q8a ----
+\subsection*{8a}
+\begin{figure}[H]\centering\caption{Mean utility and individual utility component at the true parameters.}\label{fig:grp_q8a}
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q8a_hist_delta.pdf}\caption{Mean utility $\delta_{jt}$}\label{fig:q8a_hist_delta}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q8a_hist_mu.pdf}\caption{Individual component $\mu_{ijt}$ (tails not drawn)}\label{fig:q8a_hist_mu}\end{subfigure}\par\medskip
+{\raggedright\noindent\footnotesize Source: true-parameter simulation of \texttt{100markets3products.mat}; $\delta_{jt}=x_{jt}'\beta-\bar\alpha p_{jt}+\xi_{jt}$, $\mu_{ijt}=-\sigma_\alpha\nu_i p_{jt}$.\par}
+\end{figure}
+
+% ---- Q8c ----
+\subsection*{8c}
+\tabitem{q8c_estimates_by_start.tex}{Estimates by starting point, T=100, J=3, BLP instruments (standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$).}{tab:q8c_estimates_by_start}{author's calculations from the stored full estimates \texttt{q8c\_blp\_only\_T100\_J3} (per-start values recomputed at each stored $\sigma$ minimizer, no re-optimization). Bold: start with the lowest GMM objective across starts. (n.a.): estimated variance not positive; very large standard errors indicate weak identification.}
+\tabitem{q8c_convergence_by_start.tex}{Convergence criterion and contraction error by starting point, T=100, J=3.}{tab:q8c_convergence_by_start}{author's calculations from the stored full estimates \texttt{q8c\_blp\_only\_T100\_J3} (per-start values recomputed at each stored $\sigma$ minimizer, no re-optimization); failed starts from \texttt{q8c\_blp\_only\_T100\_J3\_failed\_starts}. Bold: start with the lowest GMM objective across starts.}
+\tabitem{q8c_hausman_compare.tex}{Estimates with and without the Hausman instrument, T=100, J=3.}{tab:q8c_hausman_compare}{author's calculations from the stored full estimates \texttt{q8c\_blp\_only\_T100\_J3} and \texttt{q8c\_blp\_hausman\_T100\_J3}; best start of each. (n.a.): estimated variance not positive; very large standard errors indicate weak identification.}
+\tabitem{q8c_first_stage.tex}{First stage of price on the instruments, T=100, J=3 (heteroskedasticity-robust standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$; $F$ tests the excluded instruments given $x$).}{tab:q8c_first_stage}{author's calculations from \texttt{100markets3products.mat}; regressions include a constant, $x_2$ and $x_3$}
+
+% ---- Q8d ----
+\subsection*{8d}
+\figitem{q8d_scatter_elas.pdf}{Price elasticities at the estimates versus at the true parameters (all own- and cross-price elements).}{fig:q8d_scatter_elas}{author's calculations: elasticities at the estimates of \texttt{q8c\_blp\_only\_T100\_J3} versus the true-parameter simulation, \texttt{100markets3products.mat}}
+\tabitem{q8d_elas_cells.tex}{Elasticity of the share of product $j$ with respect to the price of product $k$: real versus simulated (at the estimates), mean and standard deviation across markets.}{tab:q8d_elas_cells}{author's calculations: elasticities at the estimates of \texttt{q8c\_blp\_only\_T100\_J3} versus the true-parameter simulation, \texttt{100markets3products.mat}}
+
+% ---- Q8e ----
+\subsection*{8e}
+\tabitem{q8e_estimates_by_start.tex}{Estimates by starting point, T=10, J=3, BLP instruments (standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$).}{tab:q8e_estimates_by_start}{author's calculations from the stored full estimates \texttt{q8e\_blp\_only\_T10\_J3} (per-start values recomputed at each stored $\sigma$ minimizer, no re-optimization). Bold: start with the lowest GMM objective across starts. (n.a.): estimated variance not positive; very large standard errors indicate weak identification.}
+\tabitem{q8e_convergence_by_start.tex}{Convergence criterion and contraction error by starting point, T=10, J=3.}{tab:q8e_convergence_by_start}{author's calculations from the stored full estimates \texttt{q8e\_blp\_only\_T10\_J3} (per-start values recomputed at each stored $\sigma$ minimizer, no re-optimization); failed starts from \texttt{q8e\_blp\_only\_T10\_J3\_failed\_starts}. Bold: start with the lowest GMM objective across starts.}
+\tabitem{q8e_hausman_compare.tex}{Estimates with and without the Hausman instrument, T=10, J=3.}{tab:q8e_hausman_compare}{author's calculations from the stored full estimates \texttt{q8e\_blp\_only\_T10\_J3} and \texttt{q8e\_blp\_hausman\_T10\_J3}; best start of each. (n.a.): estimated variance not positive; very large standard errors indicate weak identification.}
+
+% ---- Q8f ----
+\subsection*{8f}
+\tabitem{q8f_compare_original.tex}{Estimates imposing $E[\xi_{jt}p_{jt}]=0$ (price as its own instrument) versus the original IV specification.}{tab:q8f_compare_original}{author's calculations from the stored full estimates \texttt{q8c\_blp\_only\_T100\_J3} (original) and \texttt{q8f\_blp\_price\_T100\_J3}}
+\tabitem{q8f_hausman_compare.tex}{Price-as-instrument estimates with and without the Hausman instrument.}{tab:q8f_hausman_compare}{author's calculations from the stored full estimates \texttt{q8f\_blp\_price\_T100\_J3} and \texttt{q8f\_blp\_price\_hausman\_T100\_J3}}
+
+\section*{Question 9: Cost shifters and the supply side}
+
+% ---- Q9a ----
+\subsection*{9a}
+\tabitem{q9a_estimates.tex}{Demand estimates with and without the cost shifter $w_j$ in the instrument set (standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$).}{tab:q9a_estimates}{author's calculations from the stored full estimates \texttt{q8c\_*} and \texttt{q9a\_*} (T=100, J=3)}
+\begin{figure}[H]\centering\caption{Profits and own-price elasticities at the estimates, with and without the cost shifter, against real values.}\label{fig:grp_q9a}
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q9a_scatter_profits.pdf}\caption{Profits}\label{fig:q9a_scatter_profits}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q9a_scatter_elas.pdf}\caption{Own-price elasticities}\label{fig:q9a_scatter_elas}\end{subfigure}\par\medskip
+{\raggedright\noindent\footnotesize Source: author's calculations from the stored full estimates \texttt{q8c\_*} and \texttt{q9a\_*} (T=100, J=3); profits $(p-\hat c)s$ with costs recovered under Bertrand pricing; author's calculations from the stored full estimates \texttt{q8c\_*} and \texttt{q9a\_*} (T=100, J=3).\par}
+\end{figure}
+
+% ---- Q9b ----
+\subsection*{9b}
+\tabitem{q9b_estimates.tex}{Small-sample estimates (T=10, J=3) with and without the cost shifter $w_j$ (standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$).}{tab:q9b_estimates}{author's calculations from the stored full estimates \texttt{q8e\_*} and \texttt{q9b\_*} (T=10, J=3)}
+
+% ---- Q9d ----
+\subsection*{9d}
+\figitem{q9d_scatter_cost.pdf}{True versus recovered marginal costs under perfect competition, Bertrand pricing and perfect collusion (axes cover the 1st to 99th percentile of the plotted values).}{fig:q9d_scatter_cost}{author's calculations: cost inversion at the demand estimates of \texttt{q9a\_blp\_hausman\_w\_T100\_J3}}
+
+% ---- Q9e ----
+\subsection*{9e}
+\tabitem{q9e_estimates.tex}{Joint demand and supply estimates under three conduct assumptions (standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$).}{tab:q9e_estimates}{author's calculations from the stored full estimates \texttt{q9e\_system\_*\_T100\_J3}}
+\begin{figure}[H]\centering\caption{Real versus simulated elasticities and markups under the three conduct assumptions.}\label{fig:grp_q9e}
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q9e_scatter_elas.pdf}\caption{Elasticities}\label{fig:q9e_scatter_elas}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q9e_scatter_markup.pdf}\caption{Markups (axes cover the 1st to 99th percentile)}\label{fig:q9e_scatter_markup}\end{subfigure}\par\medskip
+{\raggedright\noindent\footnotesize Source: author's calculations from the stored full estimates \texttt{q9e\_system\_*\_T100\_J3}.\par}
+\end{figure}
+\tabitem{q9e_elas_desc.tex}{Descriptive statistics of real and simulated elasticities.}{tab:q9e_elas_desc}{author's calculations from the stored full estimates \texttt{q9e\_system\_*\_T100\_J3}}
+\tabitem{q9e_markup_desc.tex}{Descriptive statistics of real and simulated markups.}{tab:q9e_markup_desc}{author's calculations from the stored full estimates \texttt{q9e\_system\_*\_T100\_J3}}
+
+\section*{Question 10: Merger simulation}
+
+% ---- Q10b ----
+\subsection*{10b}
+\figitem{q10b_hist_dp.pdf}{Distribution and kernel density of the post-merger price changes of products 1, 2 (merging) and 3 (non-merging) across markets.}{fig:q10b_hist_dp}{author's calculations: merger counterfactual (firms 1 and 2, no cost efficiencies) at the estimates of \texttt{q9e\_system\_bertrand\_T100\_J3}}
+\tabitem{q10b_dp_desc.tex}{Descriptive statistics of post-merger price changes by product.}{tab:q10b_dp_desc}{author's calculations: merger counterfactual (firms 1 and 2, no cost efficiencies) at the estimates of \texttt{q9e\_system\_bertrand\_T100\_J3}}
+\tabitem{q10b_dsurplus_desc.tex}{Descriptive statistics of the post-merger changes in consumer, producer and total surplus across markets.}{tab:q10b_dsurplus_desc}{author's calculations: merger counterfactual (firms 1 and 2, no cost efficiencies) at the estimates of \texttt{q9e\_system\_bertrand\_T100\_J3}}
+
+% ---- Q10c ----
+\subsection*{10c}
+\begin{figure}[H]\centering\caption{Simulated merger effects against their linear (upward pricing pressure) approximations, one point per market.}\label{fig:grp_q10c}
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q10c_scatter_dp1.pdf}\caption{Price change of product 1}\label{fig:q10c_scatter_dp1}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q10c_scatter_dp2.pdf}\caption{Price change of product 2}\label{fig:q10c_scatter_dp2}\end{subfigure}\par\medskip
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q10c_scatter_dcs.pdf}\caption{Change in consumer surplus}\label{fig:q10c_scatter_dcs}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q10c_scatter_dps.pdf}\caption{Change in producer surplus}\label{fig:q10c_scatter_dps}\end{subfigure}\par\medskip
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q10c_scatter_dts.pdf}\caption{Change in total surplus}\label{fig:q10c_scatter_dts}\end{subfigure}\par\medskip
+{\raggedright\noindent\footnotesize Source: author's calculations: merger counterfactual (firms 1 and 2, no cost efficiencies) at the estimates of \texttt{q9e\_system\_bertrand\_T100\_J3}; diversion ratios and $\mathrm{UPP}_j=D_{jk}(p_k-c_k)$ from the pre-merger estimates.\par}
+\end{figure}
+
+\section*{Question 11: Newer instruments and substitution diagnostics}
+
+% ---- Q11a ----
+\subsection*{11a}
+\tabitem{q11a_first_stage.tex}{Price first stage with each instrument family, T=100, J=5 (heteroskedasticity-robust standard errors in parentheses; $F$ tests the excluded instruments given $x$).}{tab:q11a_first_stage}{author's calculations from \texttt{100markets5products.mat}; first-stage regressions include a constant, $x_2$ and $x_3$}
+\tabitem{q11a_estimates_all.tex}{Estimates and final GMM objective by instrument set, T=100, J=5 (standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$).}{tab:q11a_estimates_all}{author's calculations from the stored full estimates \texttt{q11a\_*\_T100\_J5}; best start of each. No fixed effects are used in any specification. (n.a.): estimated variance not positive; very large standard errors indicate weak identification.}
+\tabitem{q11a_sensitivity.tex}{Sensitivity to starting values, T=100, J=5.}{tab:q11a_sensitivity}{author's calculations from the stored full estimates \texttt{q11a\_*\_T100\_J5} and the corresponding \texttt{*\_failed\_starts} files; summary over all starting points}
+
+% ---- Q11b ----
+\subsection*{11b}
+\tabitem{q11b_fe_variation.tex}{Variation of the price and of each instrument explained by market and product fixed effects, T=100, J=5; the last two columns show what remains after both sets of effects.}{tab:q11b_fe_variation}{author's calculations from \texttt{100markets5products.mat}; $R^2$ from regressing each variable on market dummies, product dummies, or both (balanced panel)}
+
+% ---- Q11c ----
+\subsection*{11c}
+\begin{figure}[H]\centering\caption{Own-price semi-elasticity against price.}\label{fig:grp_q11c}
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q11c_scatter_semielas.pdf}\caption{All product-markets}\label{fig:q11c_scatter_semielas}\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}\centering\includegraphics[width=\linewidth]{q11c_scatter_semielas_restricted.pdf}\caption{Restricted sample ($|i^{scp}_{jt}/\eta_{jt}|<0.25$)}\label{fig:q11c_scatter_semielas_restricted}\end{subfigure}\par\medskip
+{\raggedright\noindent\footnotesize Source: author's calculations at the stored estimates \texttt{q11a\_gh\_hausman\_T100\_J5}; $\eta_{jt}=-s_{jt}^{-1}\partial s_{jt}/\partial p_{jt}$; author's calculations at the stored estimates \texttt{q11a\_gh\_hausman\_T100\_J5}; $\eta_{jt}=-s_{jt}^{-1}\partial s_{jt}/\partial p_{jt}$; approximation-error ratio as in \texttt{pset\_io}.\par}
+\end{figure}
+\tabitem{q11c_regressions.tex}{Flexible regression of the own-price semi-elasticity on price and characteristics (the same specification in every column). Columns differ only in the sample: the cut-off on $|i^{scp}_{jt}/\eta_{jt}|$ falls from left to right, so the sample becomes more restricted (heteroskedasticity-robust standard errors in parentheses; * $p<0.1$, ** $p<0.05$, *** $p<0.01$).}{tab:q11c_regressions}{author's calculations at the stored estimates \texttt{q11a\_gh\_hausman\_T100\_J5}; $\eta_{jt}=-s_{jt}^{-1}\partial s_{jt}/\partial p_{jt}$; each column keeps the product-markets with $|i^{scp}_{jt}/\eta_{jt}|$ below the cut-off in the header}
+
+% ---- Q11d ----
+\subsection*{11d}
+\figitem{q11d_density_erank.pdf}{Density of the effective rank (exponential of the entropy of normalized singular values) of the model-implied diversion matrix across markets.}{fig:q11d_density_erank}{author's calculations at the stored estimates \texttt{q11a\_gh\_hausman\_T100\_J5}; mixed logit only}
+
+\end{document}
